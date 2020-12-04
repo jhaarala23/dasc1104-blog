@@ -1,0 +1,24 @@
+{
+    "id": "4ACB1456",
+    "path": "~/git@github.com:jhaarala23/dasc1104-github-repos.git/config.toml",
+    "project_path": "config.toml",
+    "type": "toml",
+    "hash": "3442410046",
+    "contents": "",
+    "dirty": false,
+    "created": 1607111210981.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "cursorPosition": "41,0",
+        "scrollLine": "25"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1607111330,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1607111330288,
+    "read_only": false,
+    "read_only_alternatives": []
+}
