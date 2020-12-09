@@ -16,7 +16,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_cache$", "\\.knit\\.md$", "\\.utf8\
     name = "GitHub"
     url = "https://github.com/jhaarala23/dasc1104-blog"
 [[menu.main]]
-    name = "GitHub"
+    name = "LinkedIn"
     url = "https://www.linkedin.com/in/jacob-haarala-2a683b1b8/"
 [[menu.main]]
     name = "Resume"
