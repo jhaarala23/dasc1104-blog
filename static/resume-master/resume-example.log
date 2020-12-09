@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.12.7)  9 DEC 2020 13:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.12.7)  9 DEC 2020 13:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -867,16 +867,16 @@ LaTeX Font Info:    Trying to load font information for T1+lmss on input line 1
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
-89.
+83.
 (/home/jhaarala/.TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Underfull \hbox (badness 1253) in paragraph at lines 215--216
-[]\T1/lmr/m/n/10.95 ~Expected Grad-u-a-tion Date --- May
+Underfull \hbox (badness 5231) in paragraph at lines 223--224
+[]\T1/lmr/m/n/10.95 ~Expected Grad-u-a-tion Date: May
  []
 
 
-Underfull \hbox (badness 1655) in paragraph at lines 243--244
+Underfull \hbox (badness 1655) in paragraph at lines 251--252
 []\T1/lmr/m/it/10.95 2019-2020 Louisiana Fu-ture Busi-ness
  []
 
@@ -910,7 +910,7 @@ c/lm/lmr9.pfb></home/jhaarala/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.
 pfb></home/jhaarala/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmri8.pfb></home/
 jhaarala/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></home/jhaarala
 /.TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt9.pfb>
-Output written on resume-example.pdf (1 page, 470446 bytes).
+Output written on resume-example.pdf (1 page, 470549 bytes).
 PDF statistics:
  110 PDF objects out of 1000 (max. 8388607)
  95 compressed objects within 1 object stream

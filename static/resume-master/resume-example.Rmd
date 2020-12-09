@@ -47,8 +47,11 @@ photobigness: 1.75cm
 
 ## Rocketfast! Car Wash
 *(June 2020 — August 2020)*
+
 - Acquired experience in Customer Service
+
 - Managed Customers Accounts for Monthly Wash Plans
+
 - Encountered situations where it was required to use critical thinking	
 
 
@@ -57,6 +60,7 @@ photobigness: 1.75cm
 - *Sports Writer for the “Chatterbox”*
   
   ~(May 2019 — April 2020)~
+  
   School Newspaper at Ruston High School
 
 :::
@@ -73,7 +77,7 @@ Ruston High School Class of 2020
 
 - *Bachelor of Data Science*
   
-  ~Expected Graduation Date — May 2024~
+  ~Expected Graduation Date: May 2024~
 
 
 # Skills 
