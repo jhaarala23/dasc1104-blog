@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.12.7)  9 DEC 2020 13:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.12.7)  9 DEC 2020 13:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -805,7 +805,7 @@ File: fc-english.def 2016/01/12
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
 (lastpage)             ! on input line 139.
-<art-picture.jpg, id=39, 1319.93124pt x 2051.665pt>
+<art-picture.jpg, id=35, 1319.93124pt x 2051.665pt>
 File: art-picture.jpg Graphic file (type jpg)
 <use art-picture.jpg>
 Package pdftex.def Info: art-picture.jpg  used on input line 144.
@@ -871,12 +871,12 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
 (/home/jhaarala/.TinyTeX/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Underfull \hbox (badness 1325) in paragraph at lines 244--246
-[]\T1/lmr/m/it/10.95 Bachelor of Data Sci-ence \T1/lmr/m/n/10.95 ~Ex-pected
+Underfull \hbox (badness 1253) in paragraph at lines 215--216
+[]\T1/lmr/m/n/10.95 ~Expected Grad-u-a-tion Date --- May
  []
 
 
-Underfull \hbox (badness 1655) in paragraph at lines 273--274
+Underfull \hbox (badness 1655) in paragraph at lines 243--244
 []\T1/lmr/m/it/10.95 2019-2020 Louisiana Fu-ture Busi-ness
  []
 
@@ -887,13 +887,13 @@ AED: lastpage setting LastPage
 {/home/jhaarala/.TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./art-p
 icture.jpg>] (./resume-example.aux)
 Package rerunfilecheck Info: File `resume-example.out' has not changed.
-(rerunfilecheck)             Checksum: 9917ADA271B7C332FAD47914E1BDC91B;1147.
+(rerunfilecheck)             Checksum: E7D50F7253BB9EF452C5BC3D4DA07062;957.
  ) 
 Here is how much of TeX's memory you used:
- 24202 strings out of 481331
- 422854 string characters out of 5917527
- 726321 words of memory out of 5000000
- 40563 multiletter control sequences out of 15000+600000
+ 24198 strings out of 481331
+ 422778 string characters out of 5917527
+ 723321 words of memory out of 5000000
+ 40561 multiletter control sequences out of 15000+600000
  463799 words of font info for 63 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  80i,11n,85p,1026b,654s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -910,10 +910,10 @@ c/lm/lmr9.pfb></home/jhaarala/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmri10.
 pfb></home/jhaarala/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmri8.pfb></home/
 jhaarala/.TinyTeX/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb></home/jhaarala
 /.TinyTeX/texmf-dist/fonts/type1/public/lm/lmtt9.pfb>
-Output written on resume-example.pdf (1 page, 473940 bytes).
+Output written on resume-example.pdf (1 page, 470446 bytes).
 PDF statistics:
- 120 PDF objects out of 1000 (max. 8388607)
- 104 compressed objects within 2 object streams
- 18 named destinations out of 1000 (max. 500000)
- 82 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 110 PDF objects out of 1000 (max. 8388607)
+ 95 compressed objects within 1 object stream
+ 16 named destinations out of 1000 (max. 500000)
+ 74 words of extra memory for PDF output out of 10000 (max. 10000000)
 

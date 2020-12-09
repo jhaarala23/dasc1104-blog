@@ -51,24 +51,13 @@ photobigness: 1.75cm
 - Managed Customers Accounts for Monthly Wash Plans
 - Encountered situations where it was required to use critical thinking	
 
-## World Wrestling Federation
-
-- Wrestled Shawn Michaels to a countout draw in front of 80,000 fans in Wembley Stadium at Summerslam 1992.
-- Carried Tito Santana like dead weight to tag team prominence, before [tiring of him at Wrestlemania V](https://www.youtube.com/watch?v=VKnWAxg4R68).
-- Had two amazing entrance themes where somehow the least amazing of the two is [the one done by Robbie Dupree](https://www.youtube.com/watch?v=1bNr3144GDI).
-- Successfully cultivated "The Model" persona, relocating to Cocoa Beach for a gimmick that was years ahead of its time.
-- Launched successful line of cologne, *Arrogance*, and advertised it in [some amazing vignettes](https://www.youtube.com/watch?v=zm9AbH7CnBc).
-- [Temporarily blinded Jake "The Snake" Roberts](https://www.youtube.com/watch?v=cs7sxJboGWA), incapacitating him for the better part of 1990.
-
 
 ## Volunteer Experience or Leadership
 
 - *Sports Writer for the “Chatterbox”*
+  
   ~(May 2019 — April 2020)~
   School Newspaper at Ruston High School
-- 
-
-
 
 :::
 ::: {.column width="2%" data-latex="{0.02\textwidth}"}
@@ -83,6 +72,7 @@ Ruston High School Class of 2020
 ## Undergraduate Program
 
 - *Bachelor of Data Science*
+  
   ~Expected Graduation Date — May 2024~
 
 
@@ -96,8 +86,10 @@ Ruston High School Class of 2020
 ## Awards and Distinctions
 
 - *Eagle Scout*
+  
   ~Earned in August of 2018~
 - *2019-2020 Louisiana Future Business Leaders of America (FBLA) State Parliamentarian*
+  
   ~May 2019~
 
 :::
