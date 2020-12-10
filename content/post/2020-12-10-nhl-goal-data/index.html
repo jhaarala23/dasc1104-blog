@@ -13,4 +13,27 @@ tags: []
 
 <div id="data" class="section level2">
 <h2>Data</h2>
+<p>In this project I will be examining NHL goal data using the game_goals.csv dataset from HockeyReference.com (they put out the other two datasets used in this post as well) that they put out after future hall-of-famer Alexander Ovechkin scored his 700th career goal. The data consists of 49384 observations of 25 variables. The variable season represents each NHL season from 2006 to 2018.</p>
+<p>The second dataset I will be using is the season_goals.csv. The player variable represents the individual players. The goals variable represents the number of goals an individual scored in one season.</p>
+<pre class="r"><code>library(tidyverse)
+game_goals &lt;- read_csv(&quot;game_goals.csv&quot;)
+season_goals &lt;- read_csv(&quot;season_goals.csv&quot;)
+top_250_career &lt;- read_csv(&quot;top_250.csv&quot;)</code></pre>
+</div>
+<div id="question-1" class="section level2">
+<h2>Question 1</h2>
+<p>Everyone who knows anything about hockey understands that Ovechkin is a prolific goal scorer, but how does he measure up against the other great goal scorers in NHL history?</p>
+<pre class="r"><code># filter to only include seasons of &gt;= 60 goals scored
+GOAT_goal_scorers &lt;- season_goals %&gt;%
+  filter(goals &gt; 60)</code></pre>
+<p>I filtered out the data to only count seasons where a player scored 60 or more goals, because 1) there was too much data otherwise, and 2) it gives a better sense of who had the most seasons with a way-above-average number of goals scored.</p>
+<pre class="r"><code>ggplot(GOAT_goal_scorers, mapping = aes(player, goals, fill = player)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = -90, hjust = 0)) +
+  theme(legend.position = &quot;None&quot;) +
+  # this is just so the color of the boxplots match the team, ore one of the teams, the player played for
+  scale_fill_manual(values = c(&quot;Alex Ovechkin&quot; = &quot;red4&quot;, &quot;Alexander Mogilny&quot; = &quot;navy&quot;, &quot;Bernie Nicholls&quot; = &quot;gray4&quot;, &quot;Bobby Hull&quot; = &quot;red4&quot;, &quot;Brett Hull&quot; = &quot;green4&quot;, &quot;Jari Kurri&quot; = &quot;orangered&quot;, &quot;Jaromir Jagr*&quot; = &quot;yellow3&quot;, &quot;Lanny McDonald&quot; = &quot;red3&quot;, &quot;Luc Robitaille&quot; = &quot;darkorchid4&quot;, &quot;Mario Lemieux&quot; = &quot;yellow2&quot;, &quot;Mike Bossy&quot; = &quot;chocolate1&quot;, &quot;Phil Esposito&quot; = &quot;gold&quot;, &quot;Reggie Leach&quot; = &quot;darkorange&quot;,  &quot;Steve Yzerman&quot; = &quot;red3&quot;, &quot;Teemu Selanne&quot; = &quot;navyblue&quot;, &quot;Wayne Gretzky&quot; = &quot;mediumblue&quot;))</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>This graphic gives an interesting insight into Ovechkin’s place among the all-time goal scoring greats in the history of the NHL. He has one 60+ goal season, which puts him in elite company. However, he still isn’t quite on the level of other all-time great goal scorers like Wayne Gretzky, they call him “The Great One” for a reason, Brett Hull, and Mario Lemieux.</p>
+<p>However, this graph is not the end all be all in determining the caliber of goal scorer. Maurice “Rocket” Richard played for the Montreal Canadiens from 1942-1960 and was an elite goal scorer, just look at his then record 544 career goals upon retirement. He was so elite that the Maurice “Rocket” Richard Trophy, also known as the Rocket Richard Trophy, that is awarded annually to the leading goal scorer in the National Hockey League is named after him. However, he played in the Original Six era where they played 70 games a season compared to 80 games a season when Gretzky started out, and the 82 games played each season in the modern day. Because of this Richard never scored 60+ goals in one season, but that shouldn’t automatically exclude him (and other Original Six Era greats like Gordie Howe for that matter) from the discussion of best goal scorers of all time.</p>
 </div>

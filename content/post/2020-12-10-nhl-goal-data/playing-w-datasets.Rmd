@@ -1,0 +1,40 @@
+---
+title: "Untitled"
+author: "Jacob Haarala"
+date: "12/10/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+
+
+```{r}
+game_goals <- read_csv("game_goals.csv")
+season_goals <- read_csv("season_goals.csv")
+top_250_career <- read_csv("top_250.csv")
+```
+
+## Including Plots
+
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+season_goals %>%
+  filter(goals > 60) %>%
+  ggplot(season_goals, mapping = aes(player, goals, fill = player)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = -90, hjust = 0)) +
+  theme(legend.position = "None") +
+  scale_fill_manual(values = c("Alex Ovechkin" = "red4", "Alexander Mogilny" = "navy", "Bernie Nicholls" = "gray4", "Bobby Hull" = "red4", "Brett Hull" = "green4", "Jari Kurri" = "orangered", "Jaromir Jagr" = "yellow3", "Lanny McDonald" = "red3", "Luc Robitaille" = "darkorchid4", "Mario Lemieux" = "yellow2", "Mike Bossy" = "chocolate1", "Phil Esposito" = "gold", "Reggie Leach" = "darkorange",  "Steve Yzerman" = "red3", "Teemu Selanne" = "navyblue", "Wayne Gretzky" = "mediumblue"))
+```
+
