@@ -52,7 +52,7 @@ The second dataset used, nfl_elo_latest.csv, has an identical setup for its data
 ```{r}
 
 RAPTOR_byplayer_hist <- read_csv(here::here("nba-raptor", "historical_RAPTOR_by_player.csv"))
-RAPTOR_byteam_hist <- read_csv(here::here("nba-raptor", "historical_RAPTOR_by_team.csv"))
+RAPTOR_byteam_hist <- read_csv(here::here("nba-raptor", "historical_RAPTOR_by_team.csv"))d
 RAPTOR_byplayer_latest <- read_csv(here::here("nba-raptor", "latest_RAPTOR_by_player.csv"))
 RAPTOR_byteam_latest <- read_csv(here::here("nba-raptor", "latest_RAPTOR_by_team.csv"))
 
