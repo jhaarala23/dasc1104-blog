@@ -9,20 +9,22 @@ tags: []
 
 ## Data
 
-```{r}
+```{r, message=FALSE}
 library(tidyverse)
 RAPTOR_byplayer_latest <- read_csv("latest_RAPTOR_by_player.csv")
 RAPTOR_byteam_latest <- read_csv("latest_RAPTOR_by_team.csv")
+RAPTOR_byplayer_hist <- read_csv("historical_RAPTOR_by_player.csv")
+RAPTOR_byteam_hist <- read_csv("historical_RAPTOR_by_team.csv")
 ```
 
-In this project, I am examining individual players' impact on their team's success using the latest_RAPTOR_by_team.csv dataset(s) from the fivethirtyeight website. The data consists of 808 observations of 23 variables. The variable pace_impact represents a player's impact on team possessions per 48 minutes, so if it is positive that means that that player is helping to increase the pace by which their team plays. This is relevant because by increasing their team's pace they are helping add extra possessions. The variable raptor_total represents the points above average per 100 possessions added by player on both offense and defense. The war_total represents Wins Above Replacement between regular season and playoffs, so it is another variable that measures an individual player's ability to influence the outcome. The mp variable represents minutes played, which can help give some context since the better players in the NBA will naturally be playing more minutes.
+In this project, I am examining individual players' impact on their team's success using the latest_RAPTOR_by_team.csv dataset(s) from the fivethirtyeight website. The data consists of 808 observations of 23 variables. The variable pace_impact represents a player's impact on team possessions per 48 minutes, so if it is positive that means that that player is helping to increase the pace by which their team plays. This is relevant because by increasing their team's pace they are helping add extra possessions. The variable raptor_total represents the points above average per 100 possessions added by player on both offense and defense. The war_total represents Wins Above Replacement between regular season and playoffs, so it is another variable that measures an individual player's ability to influence the outcome. The mp variable represents minutes played, which can help give some context since the better players in the NBA will naturally be playing more minutes. The variable season_type is a variable that represents the type of season and has two levels: regular season (RS) and playoff (PO).
 
 
 ## Question 1
 
 So how does the pace_impact of a player indicate their impact on the outcome of the game for their team? If so, what was the effect? First we need to graph the pace_impact variable to see if there is a correlation.
 
-```{r}
+```{r, message=FALSE}
 # graphed raptor_total vs. pace_impact, but correlated minutes played to size and war_total to color 
 ggplot(data = RAPTOR_byteam_latest, mapping = aes(pace_impact, raptor_total, color = war_total)) +
   geom_point()  
@@ -35,3 +37,34 @@ On the first graph most of the data values, and WAR ratings do not seem to have 
 The difference between the two graphs shows that the pace_impact does not have much of an impact on team success. Of all the bigger dots that represent players that get a substantial minutes, none of them reach above a raptor_total rating of 25. This suggests that even if a better player helps increase the pace of play, effectively earning extra possessions for their team, it won't make a noticable difference.
 
 
+## Question 2
+
+The next thing I want to test is whether the distribution of the data varies from the regular season to the post season.
+
+```{r}
+reg_season <- RAPTOR_byteam_hist %>%
+  filter(season_type == "RS") 
+
+playoffs <-  RAPTOR_byteam_hist %>%
+  filter(season_type == "PO") 
+```
+
+Here I created two new datasets so it will be easier to view the data for the regular season and for the playoffs separately. 
+
+```{r}
+ggplot(data = reg_season, mapping = aes(season, poss, color = team)) +
+  geom_point() +
+  xlab("regular season") +
+  facet_wrap(~team) +
+  theme(legend.position = "None") +
+  theme(axis.text.x = element_text(angle = -90, hjust = 0))
+
+ggplot(data = playoffs, mapping = aes(season, poss, color = team)) +
+  geom_point() +
+  xlab("playoffs") +
+  facet_wrap(~team) +
+  theme(legend.position = "None") +
+  theme(axis.text.x = element_text(angle = -90, hjust = 0))
+```
+
+In the two graphics above graphed the number of possessions vs. the type of season (regular season or playoffs). The number of possessions are more consistently high on the regular season graph than they are on the graph for the playoffs. One possible explanation for this would be that not everyone plays as long as the others in the playoffs because they might have gotten eliminated earlier. However, even the peaks on the playoff graphic appear to be not as high as the average during the regular season. Could this mean that the number of possessions, or in other words the number of opportunities to score, become lower in the playoffs?
