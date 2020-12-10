@@ -73,11 +73,13 @@ photobigness: 1.75cm
 # Education
 
 Ruston High School Class of 2020
-## Undergraduate Program
+
+**Undergraduate Program**
 
 - *Bachelor of Data Science*
   
-  ~Expected Graduation Date: May 2024~
+  ~Expected Graduation Date: 
+  May 2024~
 
 
 # Skills 
