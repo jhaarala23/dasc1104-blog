@@ -19,7 +19,6 @@ email: jhaarala@uark.edu
 phone: 920-851-0072
 location: "University of Arkansas"
 github: jhaarala23
-web: wwe.com/superstars/rick-martel
 linkedin: "jacob-haarala-2a683b1b8"
 mainfont: cochineal
 sansfont: Fira Sans
@@ -40,34 +39,29 @@ photobigness: 1.75cm
 :::::: {.columns}
 ::: {.column width="60%" data-latex="{0.60\textwidth}"}
 
-# Professional Experience
+# Objective
 
-## World Championship Wrestling
+*To get an internship and acquire experience in my field before graduating.*
 
-- Successfully feuded with Booker T, elevating his singles career.
-- Defenestrated on national television by Perry Saturn. It was technically a glass door, but I love the term "defenestration" and I don't get to use it much so I'm rolling with that.
-- Career effectively ended at Superbrawl VIII (:()
+# Working Experience
 
-## World Wrestling Federation
+## Rocketfast! Car Wash
+*(June 2020 — August 2020)*
 
-- Wrestled Shawn Michaels to a countout draw in front of 80,000 fans in Wembley Stadium at Summerslam 1992.
-- Carried Tito Santana like dead weight to tag team prominence, before [tiring of him at Wrestlemania V](https://www.youtube.com/watch?v=VKnWAxg4R68).
-- Had two amazing entrance themes where somehow the least amazing of the two is [the one done by Robbie Dupree](https://www.youtube.com/watch?v=1bNr3144GDI).
-- Successfully cultivated "The Model" persona, relocating to Cocoa Beach for a gimmick that was years ahead of its time.
-- Launched successful line of cologne, *Arrogance*, and advertised it in [some amazing vignettes](https://www.youtube.com/watch?v=zm9AbH7CnBc).
-- [Temporarily blinded Jake "The Snake" Roberts](https://www.youtube.com/watch?v=cs7sxJboGWA), incapacitating him for the better part of 1990.
+- Acquired experience in Customer Service
 
-## American Wrestling Association
+- Managed Customers Accounts for Monthly Wash Plans
 
-- [Beat Jumbo goddamn Tsuruta for AWA World Heavyweight Championship](https://www.youtube.com/watch?v=c3O_jGZd6EI). 
-- Wrestled several matches with then-NWA World Champion Ric Flair.
-
-## Other Territories
-
-- Successfully teamed with Roddy Piper, winning a total of four tag team championships.
-- Feature attraction in multiple territories in Canada (e.g. Stampede Wrestling), Puerto Rico (World Wrestling Council), and the United States (e.g. Georgia Championship Wrestling)
+- Encountered situations where it was required to use critical thinking	
 
 
+## Volunteer Experience or Leadership
+
+- *Sports Writer for the “Chatterbox”*
+  
+  ~(May 2019 — April 2020)~
+  
+  School Newspaper at Ruston High School
 
 :::
 ::: {.column width="2%" data-latex="{0.02\textwidth}"}
@@ -78,18 +72,31 @@ photobigness: 1.75cm
 
 # Education
 
- 
-## Undergraduate Program
+Ruston High School Class of 2020
 
-B.A. in something or other.
+**Undergraduate Program**
 
-# Technical Skills (or Accomplishments)
+- *Bachelor of Data Science*
+  
+  ~Expected Graduation Date: 
+  May 2024~
 
-Put your technical skills here, or, if you're Rick Martel, list your pro-wrestling accolades.
+
+# Skills 
+
+- *Learning R, Python, and Java*
+- *Bilingual (English, German)*
+- *Experience working in a team setting*
+- *Strong Work Ethic*
 
 ## Awards and Distinctions
 
-- 
+- *Eagle Scout*
+  
+  ~Earned in August of 2018~
+- *2019-2020 Louisiana Future Business Leaders of America (FBLA) State Parliamentarian*
+  
+  ~May 2019~
 
 :::
 ::::::

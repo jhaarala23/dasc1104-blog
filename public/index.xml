@@ -5,7 +5,27 @@
     <link>/</link>
     <description>Recent content on jhaarala&#39;s DASC 1104 Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Thu, 10 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NHL Goal Data</title>
+      <link>/2020/12/10/nhl-goal-data/</link>
+      <pubDate>Thu, 10 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/12/10/nhl-goal-data/</guid>
+      <description>Data In this project I will be examining NHL goal data using the game_goals.csv dataset from HockeyReference.com (they put out the other two datasets used in this post as well) that they put out after future hall-of-famer Alexander Ovechkin scored his 700th career goal. The data consists of 49384 observations of 25 variables. The variable season represents each NHL season from 2006 to 2018.
+The second dataset I will be using is the season_goals.</description>
+    </item>
+    
+    <item>
+      <title>NBA RAPTOR Ratings&#39; Predictive Ability</title>
+      <link>/2020/12/09/nba-raptor-ratings-predictive-ability/</link>
+      <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/2020/12/09/nba-raptor-ratings-predictive-ability/</guid>
+      <description>Data library(tidyverse) RAPTOR_byteam_latest &amp;lt;- read_csv(&amp;quot;latest_RAPTOR_by_team.csv&amp;quot;) RAPTOR_byplayer_hist &amp;lt;- read_csv(&amp;quot;historical_RAPTOR_by_player.csv&amp;quot;) RAPTOR_byteam_hist &amp;lt;- read_csv(&amp;quot;historical_RAPTOR_by_team.csv&amp;quot;) In this project, I am examining individual players’ impact on their team’s success using the latest_RAPTOR_by_team.csv dataset(s) from the fivethirtyeight website. The data consists of 808 observations of 23 variables. The variable pace_impact represents a player’s impact on team possessions per 48 minutes, so if it is positive that means that that player is helping to increase the pace by which their team plays.</description>
+    </item>
+    
     <item>
       <title>About</title>
       <link>/about/</link>

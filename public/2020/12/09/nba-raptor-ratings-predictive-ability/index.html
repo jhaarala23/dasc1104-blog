@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.79.0" />
+
+
+<title>NBA RAPTOR Ratings&#39; Predictive Ability - jhaarala&#39;s DASC 1104 Blog</title>
+<meta property="og:title" content="NBA RAPTOR Ratings&#39; Predictive Ability - jhaarala&#39;s DASC 1104 Blog">
+
+
+  <link href='/favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/art-picture.jpg"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/jhaarala23/dasc1104-blog">GitHub</a></li>
+    
+    <li><a href="https://www.linkedin.com/in/jacob-haarala-2a683b1b8/">LinkedIn</a></li>
+    
+    <li><a href="/resume-master/resume-example.pdf">Resume</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">5 min read</span>
+    
+
+    <h1 class="article-title">NBA RAPTOR Ratings&#39; Predictive Ability</h1>
+
+    
+    <span class="article-date">2020-12-09</span>
+    
+
+    <div class="article-content">
+      
+<link href="index_files/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="index_files/anchor-sections/anchor-sections.js"></script>
+
+
+<div id="data" class="section level2">
+<h2>Data</h2>
+<pre class="r"><code>library(tidyverse)
+RAPTOR_byteam_latest &lt;- read_csv(&quot;latest_RAPTOR_by_team.csv&quot;)
+RAPTOR_byplayer_hist &lt;- read_csv(&quot;historical_RAPTOR_by_player.csv&quot;)
+RAPTOR_byteam_hist &lt;- read_csv(&quot;historical_RAPTOR_by_team.csv&quot;)</code></pre>
+<p>In this project, I am examining individual players’ impact on their team’s success using the latest_RAPTOR_by_team.csv dataset(s) from the fivethirtyeight website. The data consists of 808 observations of 23 variables. The variable pace_impact represents a player’s impact on team possessions per 48 minutes, so if it is positive that means that that player is helping to increase the pace by which their team plays. This is relevant because by increasing their team’s pace they are helping add extra possessions. The variable raptor_total represents the points above average per 100 possessions added by player on both offense and defense. The war_total represents Wins Above Replacement between regular season and playoffs, so it is another variable that measures an individual player’s ability to influence the outcome. The mp variable represents minutes played, which can help give some context since the better players in the NBA will naturally be playing more minutes.</p>
+<p>The other dataset I will be using is the historical_RAPTOR_by_team.csv dataset, which consists of 27371 observations of 17 variables, and the historical_RAPTOR_by_player.csv dataset. The historical_RAPTOR_by_team.csv dataset contains RAPTOR data for every player broken out by team, season and season_type since the 1976 ABA-NBA merger. The historical_RAPTOR_by_player.csv dataset contains RAPTOR data for every player broken out by season since the 1976 ABA-NBA merger. The variable season_type is a variable that represents the type of season and has two levels: regular season (RS) and playoff (PO).</p>
+</div>
+<div id="question-1" class="section level2">
+<h2>Question 1</h2>
+<p>So how does the pace_impact of a player indicate their impact on the outcome of the game for their team? If so, what was the effect? First we need to graph the pace_impact variable to see if there is a correlation.</p>
+<pre class="r"><code># graphed raptor_total vs. pace_impact, but correlated minutes played to size and war_total to color 
+ggplot(data = RAPTOR_byteam_latest, mapping = aes(pace_impact, raptor_total, color = war_total)) +
+  geom_point()  </code></pre>
+<pre><code>## Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(data = RAPTOR_byteam_latest, mapping = aes(pace_impact, raptor_total, color = war_total, size = mp)) +
+  geom_point() </code></pre>
+<pre><code>## Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-2-2.png" width="672" />
+On the first graph most of the data values, and WAR ratings do not seem to have a consistent trend. However there are some higher data values that didn’t have a clear explanation so I decided to correlate the dot size to minutes played on the second graph. I did this because RAPTOR data is supposed to be used to determine how effctive a player is, but does not necessarily always account for sample size. In the second graph we can see that all the outlier values are smaller dots which means they are for players who do not play as many minutes which hurts their level of effectiveness compared to the other players in the league.</p>
+<p>The difference between the two graphs shows that the pace_impact does not have much of an impact on team success. Of all the bigger dots that represent players that get a substantial minutes, none of them reach above a raptor_total rating of 25. This suggests that even if a better player helps increase the pace of play, effectively earning extra possessions for their team, it won’t make a noticable difference.</p>
+</div>
+<div id="question-2" class="section level2">
+<h2>Question 2</h2>
+<p>The next thing I want to test is whether the distribution of the data varies from the regular season to the post season.</p>
+<pre class="r"><code>reg_season &lt;- RAPTOR_byteam_hist %&gt;%
+  filter(season_type == &quot;RS&quot;) 
+
+playoffs &lt;-  RAPTOR_byteam_hist %&gt;%
+  filter(season_type == &quot;PO&quot;) </code></pre>
+<p>Here I created two new datasets so it will be easier to view the data for the regular season and for the playoffs separately.</p>
+<pre class="r"><code>ggplot(data = reg_season, mapping = aes(season, poss, color = team)) +
+  geom_point() +
+  xlab(&quot;regular season&quot;) +
+  facet_wrap(~team) +
+  theme(legend.position = &quot;None&quot;) +
+  theme(axis.text.x = element_text(angle = -90, hjust = 0))</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(data = playoffs, mapping = aes(season, poss, color = team)) +
+  geom_point() +
+  xlab(&quot;playoffs&quot;) +
+  facet_wrap(~team) +
+  theme(legend.position = &quot;None&quot;) +
+  theme(axis.text.x = element_text(angle = -90, hjust = 0))</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
+<p>In the two graphics above graphed the number of possessions vs. the type of season (regular season or playoffs). The number of possessions are more consistently high on the regular season graph than they are on the graph for the playoffs. One possible explanation for this would be that not everyone plays as long as the others in the playoffs because they might have gotten eliminated earlier. However, even the peaks on the playoff graphic appear to be not as high as the average during the regular season. Could this mean that the number of possessions, or in other words the number of opportunities to score, become lower in the playoffs?</p>
+</div>
+<div id="question-3" class="section level2">
+<h2>Question 3</h2>
+<p>The last thing I would like to investigate is the predictive accuracy of NBA RAPTOR data.</p>
+<pre class="r"><code>ggplot(RAPTOR_byteam_hist, aes(predator_total, raptor_total)) +
+  geom_line(color=&quot;blue&quot;) +
+  ggtitle(&quot;Historical RAPTOR data by team&quot;) +
+  theme(plot.title = element_text(hjust = 0.5))</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(RAPTOR_byplayer_hist, aes(predator_total, raptor_total)) +
+  geom_line(color=&quot;red&quot;) +
+  ggtitle(&quot;Historical RAPTOR data by player&quot;) +
+  theme(plot.title = element_text(hjust = 0.5))</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-5-2.png" width="672" />
+For both graphs I tested the predictive ability of the RAPTOR data by graphing the raptor_total variable vs. the predator_total for the historical_RAPTOR_by_player.csv and the historical_RAPTOR_by_team.csv datasets. The data does spike in both directions, but its trend is fairly linear. This suggests that more times than not, RAPTOR data has been accurate in predicting value added for individual players.</p>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>More advanced stats like pace_impact do not seem to make an impact on a team’s success. However, as we saw in the graphs for possessions in the regular season vs. the post season, when teams get to more high-pressure situations like the playoffs having those extra possessions due to an increased pace could mean the difference between victory and defeat.</p>
+<p>However, in the graphs for pace_impact I saw how important context could be after assigning the variable for minutes played (mp) to the size of the points in the dot plot. After making that change the result showed that all the values for players who played a significant amount of minutes did not have high RAPTOR scores, and the only ones who did were players who played a much lesser amount of minutes.</p>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+
+    
+  </body>
+</html>
+
