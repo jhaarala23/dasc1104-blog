@@ -13,10 +13,9 @@ slug: nhl-goal-data
 
 <div id="data" class="section level2">
 <h2>Data</h2>
-<p>In this project I will be examining NHL goal data using the game_goals.csv dataset from HockeyReference.com (they put out the other two datasets used in this post as well) that they put out after future hall-of-famer Alexander Ovechkin scored his 700th career goal. The data consists of 49384 observations of 25 variables. The variable season represents each NHL season from 2006 to 2018.</p>
-<p>The second dataset I will be using is the season_goals.csv. The player variable represents the individual players. The goals variable represents the number of goals an individual scored in one season.</p>
+<p>In this project I will be examining NHL goal data using the season_goals.csv dataset from HockeyReference.com (they put out the other two datasets used in this post as well) that they put out after future hall-of-famer Alexander Ovechkin scored his 700th career goal. The dataset consists of 4810 observations of 23 variables. The variable season represents how many goals NHL players scored in individual seasons throughout their career. The player variable represents the individual player, and the goals variable represents the amount of goals an individual player scored within that season. The season variable represents an individual NHL season. To investigate this data it must be filtered to only include the upper echelon of goal scorers, otherwise the graphics will be flooded with data and become hard to decipher.</p>
+<p>The second dataset I will be using is the top_250.csv. This dataset is for the career goals scored for the players in the top 250 of that category. The player variable represents the individual players. This dataset consists of 251 observations of 9 variables. The raw_rank variable represents where a player lies on the list of top 250 for most career goals scored. The total_goals variable represents the total goals scored in the individual player’s NHL career. This data must also be filtered since the players being analyzed are in the top tier of goal scorers, and including others would just muddle the results.</p>
 <pre class="r"><code>library(tidyverse)
-game_goals &lt;- read_csv(&quot;game_goals.csv&quot;)
 season_goals &lt;- read_csv(&quot;season_goals.csv&quot;)
 top_250_career &lt;- read_csv(&quot;top_250.csv&quot;)</code></pre>
 </div>
@@ -40,21 +39,36 @@ GOAT_goal_scorers &lt;- season_goals %&gt;%
 <div id="question-2" class="section level2">
 <h2>Question 2</h2>
 <p>My next question that I want to investigate is how Ovechkin’s path as a prolific goal scorer in his career compares to the career trajectories of the other greats that stood out in the previous graphic: Wayne Gretzky, Mario Lemieux, and Brett Hull.</p>
-<pre class="r"><code>season_goals %&gt;%
+<pre class="r"><code>library(gghighlight)
+
+season_goals %&gt;%
   filter(player == &quot;Alex Ovechkin&quot;) %&gt;%
   ggplot(season_goals, mapping = aes(season, goals)) +
-  geom_point(shape=21, color = &quot;red&quot;, fill = &quot;midnightblue&quot;) +
+  geom_point(shape=21, col = &quot;midnightblue&quot;) +
   geom_line(color=&quot;red&quot;, group = 1) +
+   gghighlight(max(goals) &gt; 60,
+              label_key = goals,
+              unhighlighted_colour = alpha(&quot;red&quot;, 1)) +
+  geom_point(col = &quot;midnightblue&quot;, size = 2.5) +
   theme(axis.text.x = element_text(angle = -45, hjust = 0)) +
   ggtitle(&quot;Alex Ovechkin&quot;) +
   theme(plot.title = element_text(hjust = 0.5)) +
+  # I expanded the y limit to emphasize how consistently exceptional Ovechkin is with his production, as he doesn&#39;t have a single season where he has scored less than 30 goals
   ylim(0, 70)</code></pre>
+<pre><code>## Warning: The `unhighlighted_colour` argument of `gghighlight()` is deprecated as of gghighlight 0.2.0.
+## Please use the `unhighlighted_params` argument instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <pre class="r"><code>season_goals %&gt;%
   filter(player == &quot;Brett Hull&quot;) %&gt;%
   ggplot(season_goals, mapping = aes(season, goals)) +
-  geom_point(shape=21, color = &quot;goldenrod1&quot;, fill = &quot;forestgreen&quot;) +
-  geom_line(color=&quot;forestgreen&quot;, group = 1) +
+  geom_point(shape=21, col = &quot;forestgreen&quot;) +
+  geom_line(color=&quot;goldenrod1&quot;, group = 1) +
+   gghighlight(max(goals) &gt; 80,
+              label_key = goals,
+              unhighlighted_colour = alpha(&quot;goldenrod1&quot;, 1)) +
+  geom_point(col = &quot;forestgreen&quot;, size = 2.5) +
   theme(axis.text.x = element_text(angle = -45, hjust = 0)) +
   ggtitle(&quot;Brett Hull&quot;) +
   theme(plot.title = element_text(hjust = 0.5))</code></pre>
@@ -62,8 +76,12 @@ GOAT_goal_scorers &lt;- season_goals %&gt;%
 <pre class="r"><code>season_goals %&gt;%
   filter(player == &quot;Mario Lemieux&quot;) %&gt;%
   ggplot(season_goals, mapping = aes(season, goals)) +
-  geom_point(shape=21, color = &quot;gray0&quot;, fill = &quot;darkgoldenrod2&quot;) +
+  geom_point(shape=21, col = &quot;gray0&quot;) +
   geom_line(color=&quot;darkgoldenrod2&quot;, group = 1) +
+   gghighlight(max(goals) &gt; 80,
+              label_key = goals,
+              unhighlighted_colour = alpha(&quot;darkgoldenrod2&quot;, 1)) +
+  geom_point(col = &quot;gray0&quot;, size = 2.5) +
   theme(axis.text.x = element_text(angle = -45, hjust = 0)) +
   ggtitle(&quot;Mario Lemieux&quot;) +
   theme(plot.title = element_text(hjust = 0.5))</code></pre>
@@ -71,8 +89,12 @@ GOAT_goal_scorers &lt;- season_goals %&gt;%
 <pre class="r"><code>season_goals %&gt;%
   filter(player == &quot;Wayne Gretzky&quot;) %&gt;%
   ggplot(season_goals, mapping = aes(season, goals)) +
-  geom_point(shape=21, color = &quot;darkorange&quot;, fill = &quot;darkblue&quot;) +
+  geom_point(shape=21, col = &quot;darkorange&quot;) +
   geom_line(color=&quot;darkblue&quot;, group = 1) +
+   gghighlight(max(goals) &gt; 90,
+              label_key = goals,
+              unhighlighted_colour = alpha(&quot;darkblue&quot;, 1)) +
+  geom_point(col = &quot;darkorange&quot;, size = 2.5) +
   theme(axis.text.x = element_text(angle = -45, hjust = 0)) +
   ggtitle(&quot;Wayne Gretzky&quot;) +
   theme(plot.title = element_text(hjust = 0.5))</code></pre>
@@ -88,21 +110,18 @@ GOAT_goal_scorers &lt;- season_goals %&gt;%
 <pre class="r"><code>library(gghighlight)
 
 top_250_career %&gt;%
+  # I once again filtered the graph to where there was a minimum requirement for goals scored since Ovechkin and Gretzky are the 
   filter(total_goals &gt; 675) %&gt;%
   ggplot(top_250_career, mapping = aes(raw_rank, total_goals)) +
   geom_point(col = &quot;darkred&quot;) +
   gghighlight(raw_rank %in% c(1, 8),
               label_key = player,
-              unhighlighted_colour = alpha(&quot;steelblue&quot;, 0.4)) +
+              unhighlighted_colour = alpha(&quot;steelblue&quot;, 0.5)) +
   geom_point(col = &quot;darkred&quot;, size = 2.5) +
   scale_x_continuous(breaks = round(seq(min(0), max(14), by = 1),1)) +
   scale_y_continuous(breaks = round(seq(min(0), max(900), by = 25),1)) </code></pre>
-<pre><code>## Warning: The `unhighlighted_colour` argument of `gghighlight()` is deprecated as of gghighlight 0.2.0.
-## Please use the `unhighlighted_params` argument instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_warnings()` to see where this warning was generated.</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<p>These two graphics highlight Gretzky and Ovechkin on a list of top goal scorers of all time. Gretzky is currently in 1st with 894 goals, and Ovechkin is currently in 8th with 700 goals. Since the making of this data set Ovechkin scored 6 more goals before the stoppage due to COVID to reach a grand total of 706 career goals, which happens to put him 2 goals behind number 7 on the all time list Mike Gartner who had 708 career goals. Ovechkin has played in the NHL for 15 seasons. To get an average of how many goals he scores per season we can divide his 706 career goals by his 15 seasons.</p>
+<p>This graphic highlights Gretzky and Ovechkin on a list of top goal scorers of all time. Gretzky is currently in 1st with 894 goals, and Ovechkin is currently in 8th with 700 goals. Since the making of this data set Ovechkin scored 6 more goals before the stoppage due to COVID to reach a grand total of 706 career goals, which happens to put him 2 goals behind number 7 on the all time list Mike Gartner who had 708 career goals. Ovechkin has played in the NHL for 15 seasons. To get an average of how many goals he scores per season we can divide his 706 career goals by his 15 seasons.</p>
 <pre class="r"><code>a &lt;- 706 / 15
 print(a)</code></pre>
 <pre><code>## [1] 47.06667</code></pre>
