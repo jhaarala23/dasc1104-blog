@@ -57,15 +57,23 @@ top_250_career %>%
   filter(total_goals > 675) %>%
   ggplot(top_250_career, mapping = aes(raw_rank, total_goals)) +
   geom_point(col = "darkred") +
-  gghighlight(raw_rank > 0 & raw_rank < 2,
-              raw_rank > 7 & raw_rank < 9,
-              unhighlighted_colour = alpha("steelblue", 0.4),
-              use_direct_label = TRUE,
-              label_key = name,
-              label_params = list(size = 5)) +
+  gghighlight(raw_rank > 0 & raw_rank < 2 ,
+              label_key = player,
+              unhighlighted_colour = alpha("steelblue", 0.4)) +
+  geom_point(col = "darkred", size = 2.5) +
   scale_x_continuous(breaks = round(seq(min(0), max(14), by = 1),1)) +
   scale_y_continuous(breaks = round(seq(min(0), max(900), by = 25),1)) 
-  
+
+top_250_career %>%
+  filter(total_goals > 675) %>%
+  ggplot(top_250_career, mapping = aes(raw_rank, total_goals)) +
+  geom_point(col = "darkred") +
+  gghighlight(raw_rank > 7 & raw_rank < 9,
+              label_key = player,
+              unhighlighted_colour = alpha("steelblue", 0.4)) +
+  geom_point(col = "darkred", size = 2.5) +
+  scale_x_continuous(breaks = round(seq(min(0), max(14), by = 1),1)) +
+  scale_y_continuous(breaks = round(seq(min(0), max(900), by = 25),1)) 
 
 ```
 
@@ -77,4 +85,5 @@ glimpse(top_250_career)
 
 
  scale_color_manual(values = c("Alex Ovechkin" = "red4", "Brendan Shanahan" = "red3", "Brett Hull" = "green4", "Gordie Howe" = "red3", "Jaromir Jagr" = "yellow3", "Luc Robitaille" = "red3", "Marcel Dionne" = "purple", "Mario Lemieux" = "yellow2", "Mark Messier" = "dodgerblue4", "Mike Gartner" = "mediumblue", "Phil Esposito" = "gold", "Steve Yzerman" = "red3", "Teemu Selanne" = "navyblue", "Wayne Gretzky" = "chocolate1"))
+ 
 
