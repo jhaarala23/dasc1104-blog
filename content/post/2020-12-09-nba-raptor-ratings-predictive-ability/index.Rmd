@@ -1,6 +1,6 @@
 ---
-title: NBA RAPTOR Ratings' Predictive Ability
-author: ~
+title: "NBA RAPTOR Ratings' Predictive Ability"
+author: 'null'
 date: '2020-12-09'
 slug: nba-raptor-ratings-predictive-ability
 categories: []
@@ -25,33 +25,30 @@ The other dataset I will be using is the historical_RAPTOR_by_team.csv dataset, 
 
 So how does the pace_impact of a player indicate their impact on the outcome of the game for their team? If so, what was the effect? First we need to graph the pace_impact variable to see if there is a correlation.
 
-```{r, message=FALSE}
-# graphed raptor_total vs. pace_impact, but correlated war_total to color 
-ggplot(data = RAPTOR_byteam_latest, mapping = aes(pace_impact, raptor_total, color = war_total)) +
-  geom_point()  
+```{r, message=FALSE, echo=TRUE}
+
+# graphed raptor_total vs. pace_impact, but correlated player_name to color to improve the graph aesthetically
+ggplot(data = RAPTOR_byteam_latest, mapping = aes(pace_impact, raptor_total, color = player_name)) +
+  geom_point() +
+  theme(legend.position = "None")
 
 # here I did the same thing as before except adding a new layer by correlating minutes played to size
-ggplot(data = RAPTOR_byteam_latest, mapping = aes(pace_impact, raptor_total, color = war_total, size = mp)) +
-  geom_point() 
+ggplot(data = RAPTOR_byteam_latest, mapping = aes(pace_impact, raptor_total, color = player_name, size = mp)) +
+  geom_point() +
+  facet_wrap(~ season_type) +
+  theme(legend.position = "None")
 ```
 
-```{r}
-library(GGally)
-df = read.table("latest_RAPTOR_by_team.csv")
-df %>% 
-  select(-Target) %>% 
-  ggpairs()
-```
+On the first graph most of the data values, the correlation between pace_impact and raptor_total did not seem to have a consistent trend. However there are some higher data values that didn't have any context so I decided to correlate the dot size to minutes played on the second graph. I did this because RAPTOR data is supposed to be used to determine how effective a player is, but does not necessarily always account for sample size. In the second graph we can see that all the outlier values are smaller dots which means they are for players who play fewer minutes likely in roles coming off the bench which hurts their ability to affect the outcome of the game compared to the other players in the league who have bigger roles and by association more minutes played in each game.
 
+The difference between the two graphs shows that in the regular season the pace_impact does not have much of an impact on team success. Of all the bigger dots that represent players that get a substantial minutes, none of them reach above a raptor_total rating of 25, instead they are concentrated around the origin. This suggests that even if a better player helps increase the pace of play, effectively earning extra possessions for their team, it most likely will not make a noticeable difference on the outcome for their team.
 
-On the first graph most of the data values, and WAR ratings do not seem to have a consistent trend. However there are some higher data values that didn't have a clear explanation so I decided to correlate the dot size to minutes played on the second graph. I did this because RAPTOR data is supposed to be used to determine how effctive a player is, but does not necessarily always account for sample size. In the second graph we can see that all the outlier values are smaller dots which means they are for players who do not play as many minutes which hurts their level of effectiveness compared to the other players in the league.
-
-The difference between the two graphs shows that the pace_impact does not have much of an impact on team success. Of all the bigger dots that represent players that get a substantial minutes, none of them reach above a raptor_total rating of 25. This suggests that even if a better player helps increase the pace of play, effectively earning extra possessions for their team, it won't make a noticable difference.
+However, for the playoffs it seems to make more of a difference. You see a lot more larger dots above the origin. This suggests that if a team's larger contributors can impact the pace of the game this can allow them to positively impact the outcome of the game. We'll get more into this in some of the other questions.
 
 
 ## Question 2
 
-The next thing I want to test is whether the distribution of the data varies from the regular season to the post season.
+The next thing I want to test is whether the distribution of the data varies from the regular season to the post season, and what that can tell you about the success of individual teams.
 
 ```{r, message=FALSE}
 reg_season <- RAPTOR_byteam_hist %>%
@@ -63,7 +60,7 @@ playoffs <-  RAPTOR_byteam_hist %>%
 
 Here I created two new datasets so it will be easier to view the data for the regular season and for the playoffs separately. 
 
-```{r, message=FALSE}
+```{r, message=FALSE, echo=TRUE}
 ggplot(data = reg_season, mapping = aes(season, poss, color = team)) +
   geom_point() +
   xlab("regular season") +
@@ -79,15 +76,17 @@ ggplot(data = playoffs, mapping = aes(season, poss, color = team)) +
   theme(axis.text.x = element_text(angle = -90, hjust = 0))
 ```
 
-In the two graphics above graphed the number of possessions vs. the type of season (regular season or playoffs). The number of possessions are more consistently high on the regular season graph than they are on the graph for the playoffs. One possible explanation for this would be that not everyone plays as long as the others in the playoffs because they might have gotten eliminated earlier. However, even the peaks on the playoff graphic appear to be not as high as the average during the regular season. Could this mean that the number of possessions, or in other words the number of opportunities to score, become lower in the playoffs?
+In the two graphics above graphed the number of possessions vs. the type of season (regular season or playoffs). The distribution of the number of possessions is pretty uniform among all teams in the regular season since everyone plays the same amount of games. The only insight it really gives us the lifespan of certain teams. For example, there is no data for Seattle after 2010 because in 2008 they moved to Oklahoma City, and there is no data for the Toronto Raptors before 1990 because they didn't join the NBA until 1995. However, the playoff possession data gives us more insight into the success of individual teams. For example, the Detroit Pistons have two spikes in their numbers that coincide with the "Bad Boy" era in the late 80's when they won 2 championships, and the mid 2000's when they won another championship. The Lakers numbers are basically super high across the board except for during the 70's (transition between Wilt Chamberlain and Jerry West leaving and Kareem Abdul-Jabaar signing with the team), and the late 2010's after Kobe Bryant retired. It seems like a lot to look at at first, but it can give the viewer quick insight of a team's long-term success similar to looking at the history of the ups and downs of a big company's stock.
 
 
 ## Question 3 
 
 The last thing I would like to investigate is the predictive accuracy of NBA RAPTOR data. 
 
-```{r, message=FALSE}
-ggplot(RAPTOR_byteam_hist, aes(predator_total, raptor_total)) +
+```{r, message=FALSE, echo=TRUE}
+library(patchwork)
+
+p1 <- ggplot(RAPTOR_byteam_hist, aes(predator_total, raptor_total)) +
   geom_point(color="blue", alpha = RAPTOR_byteam_hist$war_total) +
   stat_smooth(color="red") +
   ggtitle("Historical RAPTOR data by team") +
@@ -95,21 +94,26 @@ ggplot(RAPTOR_byteam_hist, aes(predator_total, raptor_total)) +
   xlim(-25, 165) +
   ylim(-25, 165)
 
-ggplot(RAPTOR_byplayer_hist, aes(predator_total, raptor_total)) +
+p2 <- ggplot(RAPTOR_byplayer_hist, aes(predator_total, raptor_total)) +
   geom_point(color="red", alpha = RAPTOR_byplayer_hist$war_total) +
   stat_smooth(color="blue") +
   ggtitle("Historical RAPTOR data by player") +
   theme(plot.title = element_text(hjust = 0.5)) +
   xlim(-25, 50) +
-  ylim(-25, 50)
+  ylim(-25, 50) +
+  ylab("")
+
+p1 + p2
 ```
-For both graphs I tested the predictive ability of the RAPTOR data by graphing the raptor_total variable vs. the predator_total for the historical_RAPTOR_by_player.csv and the historical_RAPTOR_by_team.csv datasets. The data does deviate from the trend line slightly in both directions, but its trend is fairly linear. This suggests that more times than not, RAPTOR data has been accurate in predicting value added for individual players. 
+
+For both graphs I tested the predictive ability of the RAPTOR data by graphing the raptor_total variable vs. the predator_total for the historical_RAPTOR_by_player.csv and the historical_RAPTOR_by_team.csv datasets. The data does deviate from the trend line slightly in both directions, but its trend is fairly linear. This suggests that more times than not, RAPTOR data has been accurate in predicting value added for individual players. I also correlated the alpha level to the amount of minutes played so the darker the point means that player plays more minutes making them more impactful. The darker dots are closer to the origin than the lighter ones, which suggests that for players in more significant roles their total raptor rating (Points above average per 100 possessions added by player on both offense and defense) and total predator rating (Predictive points above average per 100 possessions added by player on both offense and defense) will have a stronger correlation.
 
 
 ## Conclusion
 
-More advanced stats like pace_impact do not seem to make an impact on a team's success. However, as we saw in the graphs for possessions in the regular season vs. the post season, when teams get to more high-pressure situations like the playoffs having those extra possessions due to an increased pace could mean the difference between victory and defeat.
+More advanced stats like pace_impact do not have a high impact on a team's success during the regular season. However, as we saw in the graphs for possessions in the regular season vs. the post season, when teams get to more high-pressure situations like the playoffs they are not guaranteed as many possessions as they are in the regular season. Having those extra possessions due to an increased pace could mean the difference between victory and defeat.
 
-However, in the graphs for pace_impact I saw how important context could be after assigning the variable for minutes played (mp) to the size of the points in the dot plot. After making that change the result showed that all the values for players who played a significant amount of minutes did not have high RAPTOR scores, and the only ones who did were players who played a much lesser amount of minutes.
+However, in the graphs for pace_impact I also saw how important context could be after assigning the variable for minutes played (mp) to the size of the points in the dot plot. After making that change the result showed that all the values for players who played a significant amount of minutes did not have high RAPTOR scores, and the only ones who did were players who played a much lesser amount of minutes.
 
+The last graph suggested what the nature of the relationship between the predator_total variable and the raptor_total variable. Since predator_total has to do with predicitive impact and raptor_total has to do with actual impact, the relationship can indicate the predictive power of RAPTOR statistics. Due to the close proximity to the origin for both graphs one can assume this means that RAPTOR statistics are structured in a way where they can actually accurately predict future outcomes.
 
