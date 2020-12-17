@@ -24,15 +24,15 @@ top_250_career <- read_csv("top_250.csv")
 
 Everyone who knows anything about hockey understands that Ovechkin is a prolific goal scorer, but how does he measure up against the other great goal scorers in NHL history?
 
-```{r, message=FALSE}
-# filter to only include seasons of >= 60 goals scored
+```{r, message=FALSE, echo=TRUE}
+# filter to only include seasons of > 60 goals scored
 GOAT_goal_scorers <- season_goals %>%
   filter(goals > 60)
 ```
 
 I filtered out the data to only count seasons where a player scored 60 or more goals, because 1) there was too much data otherwise, and 2) it gives a better sense of who had the most seasons with a way-above-average number of goals scored.
 
-```{r, message=FALSE}
+```{r, message=FALSE, echo=TRUE}
 ggplot(GOAT_goal_scorers, mapping = aes(player, goals, fill = player)) +
   geom_boxplot() +
   theme(axis.text.x = element_text(angle = -90, hjust = 0)) +
@@ -50,7 +50,7 @@ However, this graph is not the end all be all in determining the caliber of goal
 
 My next question that I want to investigate is how Ovechkin's path as a prolific goal scorer in his career compares to the career trajectories of the other greats that stood out in the previous graphic: Wayne Gretzky, Mario Lemieux, and Brett Hull.
 
-```{r, message=FALSE}
+```{r, message=FALSE, echo=TRUE}
 
 library(gghighlight)
 
@@ -59,7 +59,7 @@ season_goals %>%
   ggplot(season_goals, mapping = aes(season, goals)) +
   geom_point(shape=21, col = "midnightblue") +
   geom_line(color="red", group = 1) +
-  # I labeled the season in which each player scored their career high for goals in one season to show the exact number of goals they scored
+  # I labeled the season in which each player scored their career high for goals in one season to show the exact number of goals they scored since I will be referencing those numbers later 
    gghighlight(max(goals) > 60,
               label_key = goals,
               unhighlighted_colour = alpha("red", 1)) +
@@ -110,8 +110,10 @@ season_goals %>%
   theme(plot.title = element_text(hjust = 0.5))
 
 ```
-*For certain players there are years where there are 3 dots representing total goals in a season instead of one. This is represents a year in which the player was traded, so there is a dot representing goals scored with each team, and a dot representing total goals. 
+*For certain players there are years where there are 3 dots representing total goals in a season instead of one. This is represents a year in which the player was traded, so there is a dot representing goals scored with each team, and a dot representing total goals.
+
 *Brett Hull was traded from the Calgary Flames to the St. Louis Blues in the 1987-1988 season. He scored 26 goals with Calgary, 6 goals with St. Louis, and 32 overall.
+
 *Wayne Gretzky was traded twice. While the Edmonton Oilers were still in the WHA Gretzky was traded to them by the Indianapolis Racers in the 1978-1979 season. He scored 3 goals with Indianapolis, 43 goals with Edmonton, and 46 total. The second trade was in the 1995-1996 season when the Los Angeles Kings traded him to the St. Louis Blues. He scored 15 goals with Los Angeles, 8 goals with St. Louis, and 23 goals total. 
 
 
@@ -120,20 +122,20 @@ When comparing the data there is one factor that separates Ovechkin from Hull, L
 
 ## Question 3
 
-My final question is where does Ovechkin fall on the list of total career goals, and whether or not it is possible for him to eventually set the record for most career goals before he retires.
+My final question is where does Ovechkin fall on the list of the most total career goals scored all time, and whether or not it is possible for him to eventually set the record for most career goals before he retires.
 
-```{r, message=FALSE}
+```{r, message=FALSE, echo=TRUE}
 library(gghighlight)
 
 top_250_career %>%
-  # I once again filtered the graph to where there was a minimum requirement for goals scored since Ovechkin and Gretzky are the 
+  # I once again filtered the graph to where there was a minimum requirement for goals scored since Ovechkin and Gretzky are the two players being compared I didn't want too much going on in the background 
   filter(total_goals > 675) %>%
   ggplot(top_250_career, mapping = aes(raw_rank, total_goals)) +
   geom_point(col = "darkred") +
   gghighlight(raw_rank %in% c(1, 8),
               label_key = player,
               unhighlighted_colour = alpha("steelblue", 0.5)) +
-  geom_point(col = "darkred", size = 2.5) +
+  geom_point(col = "darkred", size = 3) +
   scale_x_continuous(breaks = round(seq(min(0), max(14), by = 1),1)) +
   scale_y_continuous(breaks = round(seq(min(0), max(900), by = 25),1)) 
 ```
@@ -142,25 +144,25 @@ top_250_career %>%
 
 This graphic highlights Gretzky and Ovechkin on a list of top goal scorers of all time. Gretzky is currently in 1st with 894 goals, and Ovechkin is currently in 8th with 700 goals. Since the making of this data set Ovechkin scored 6 more goals before the stoppage due to COVID to reach a grand total of 706 career goals, which happens to put him 2 goals behind number 7 on the all time list Mike Gartner who had 708 career goals. Ovechkin has played in the NHL for 15 seasons. To get an average of how many goals he scores per season we can divide his 706 career goals by his 15 seasons.
 
-```{r}
+```{r, echo=TRUE}
 a <- 706 / 15
 print(a)
 ```
 
 Now, since Ovechkin has 186 less career goals than Gretzky we'll divide that number by his career goals per season average to see how many seasons of similar production it would take to catch Gretzky.
 
-```{r}
+```{r, echo=TRUE}
 186 / a
 ```
 
-So this means it would take Ovechkin roughly 4 seasons of similar production to catch Gretzky and have the most career goals of all time. Ovechkin is 35 years old, so banking on him having averaging about 47 goals a season for the next 4 seasons might not be very realistic since he is likely due for a decrease in production. However, Ovechkin is one of the best ever at consistently scoring a lot of goals. He has the second most 40-goal seasons of all time with 11, 1 less than Gretzky's 12. He also comes in second place all time for 50-goal seasons with 8, Gretzky and Mike Bossy are tied for first with 9. 
+So this means it would take Ovechkin roughly 4 more seasons of production similar to what he's putting up now to catch Gretzky and have the most career goals of all time. Ovechkin is 35 years old, so banking on him having averaging about 47 goals a season for the next 4 seasons might not be very realistic since he is likely due for a decrease in production. However, Ovechkin is one of the best ever at consistently scoring a lot of goals. He has the second most 40-goal seasons of all time with 11, 1 less than Gretzky's 12. He also comes in second place all time for 50-goal seasons with 8, Gretzky and Mike Bossy are tied for first with 9. So it may not be farfetched to say he could accomplish this feat.
 
 
 ## Conclusion
 
 Ovechkin's career is not even over yet he is already in elite company thanks to his goal scoring prowess. The purpose of this investigation was to see if he would be able to one day have the title as the greatest goal scorer of all time. The findings suggest that even though he is likely due for a dip in production, surpassing Gretzky does not look like an unattainable goal for Alexander Ovechkin.
 
-However, does he have to surpass Gretzky to attain this title? Gretzky has more goals, but he also played in an era where players simply scored more than they do now. According to Steve Dongle of *Sportsnet*, in the 2016-2017 season NHL teams averaged 227 goals for and 227 against, or about 5.5 goals per game. In the 1981-1982 season where Gretzky scored an unthinkable 92 goals that number was over **8 goals per game.** Because of cases like this *hockey-reference.com* has era-adjusted numbers for goals scored in a season to account for how difficult, or not difficult, it was to score in the era the player played in. Before this, Gordie Howe's 49 goals in the 1952-1953 season would never have been brought up as one of the top goal scoring seasons of all time. After adjusting for era his number of "adjusted goals" is 65 which is 11th all-time, which as a Red Wings fan makes me very happy. The reason Mr. Hockey's total went up so much can be chalked up to the season being only 70 games long, and the goals per game being **4.77.**
+However, does he even have to surpass Gretzky to attain this title? Gretzky has more goals, but he also played in an era where players simply scored much more than they do now. According to Steve Dongle of *Sportsnet*, in the 2016-2017 season NHL teams averaged 227 goals for and 227 against, or about 5.5 goals per game. In the 1981-1982 season where Gretzky scored an unthinkable 92 goals that number was **over 8 goals per game.** Because of cases like this *hockey-reference.com* has era-adjusted numbers for goals scored in a season to account for how difficult, or not difficult, it was to score in the era the player played in. Before this, Gordie Howe's 49 goals in the 1952-1953 season would never have been brought up as one of the top goal scoring seasons of all time. But, after adjusting for era his number of "adjusted goals" is 65 which is 11th all-time, which as a Red Wings fan makes me very happy. The reason Mr. Hockey's total went up so much can be chalked up to the seasons back then being only 70 games long, and the goals per game being **4.77.**
 
-But what about Ovechkin's 65 goals in the 2007-2008 season? The number of adjusted goals for Ovechkin in that season is **72**, second only to Brett Hull's 78 that came from his 86 goal season in 1990-1991. When looking at career records for adjusted goals scored Gordie Howe is 1st with 925, I mean he did play 35 seasons, Jagr is 2nd with 841, and **Ovechkin is 3rd with 798**. This added wrinkle in the analysis of Ovechkin's status among the goal scoring elite boosts his argument for being one of the best. Not to mention what would have been his rookie season in 2004-2005 was cancelled due to a lockout, the 2012-2013 was shortened also due to a lockout, and the 2019-2020 season (in which he was tied for the league lead in goals with 48) was cut short because of COVID. His numbers likely be much higher if it wasn't for this. Had these crazy incidents not happened Ovechkin would likely be much closer to having the most career goals scored of all time, and that's without adjusting for era. In conclusion, based off of analysis Ovechkin will be the best goal scorer of all time by the time he retires- that is if he isn't already.
+But what about Ovechkin's career-high 65 goals in the 2007-2008 season? The number of adjusted goals for Ovechkin in that season is **72**, second only to Brett Hull's 78 that came from his 86 goal season in 1990-1991. When looking at career records for adjusted goals scored Gordie Howe is 1st with 925, I mean he did play 35 seasons, Jagr is 2nd with 841, and **Ovechkin is 3rd with 798**. This added wrinkle in the analysis of Ovechkin's status among the goal scoring elite boosts his argument for being one of the best ever at putting the puck in the net. Not to mention what would have been his rookie season in 2004-2005 was cancelled due to a lockout, the 2012-2013 season (in which he had 32 goals and was on pace for 55) was shortened also due to a lockout, and the 2019-2020 season (in which he was tied for the league lead in goals with 48 and was on pace to score 58) was cut short because of COVID. His numbers would likely be much higher if it wasn't for this. Had these crazy incidents not happened Ovechkin would likely be much closer to having the most career goals scored of all time, and that's without even adjusting for era. In conclusion, based off of my analysis I firmly believe Ovechkin will be the best goal scorer of all time by the time he retires- that is if he isn't already.
 
