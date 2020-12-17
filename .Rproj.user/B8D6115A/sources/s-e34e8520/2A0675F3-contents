@@ -85,4 +85,5 @@ glimpse(top_250_career)
 
 
  scale_color_manual(values = c("Alex Ovechkin" = "red4", "Brendan Shanahan" = "red3", "Brett Hull" = "green4", "Gordie Howe" = "red3", "Jaromir Jagr" = "yellow3", "Luc Robitaille" = "red3", "Marcel Dionne" = "purple", "Mario Lemieux" = "yellow2", "Mark Messier" = "dodgerblue4", "Mike Gartner" = "mediumblue", "Phil Esposito" = "gold", "Steve Yzerman" = "red3", "Teemu Selanne" = "navyblue", "Wayne Gretzky" = "chocolate1"))
+ 
 

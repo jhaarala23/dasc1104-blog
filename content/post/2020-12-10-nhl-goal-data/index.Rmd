@@ -126,8 +126,6 @@ top_250_career %>%
   geom_point(col = "darkred", size = 2.5) +
   scale_x_continuous(breaks = round(seq(min(0), max(14), by = 1),1)) +
   scale_y_continuous(breaks = round(seq(min(0), max(900), by = 25),1)) 
-
-
 ```
 
 
