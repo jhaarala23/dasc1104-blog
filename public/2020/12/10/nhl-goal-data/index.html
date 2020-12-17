@@ -150,6 +150,16 @@ GOAT_goal_scorers &lt;- season_goals %&gt;%
 *Wayne Gretzky was traded twice. While the Edmonton Oilers were still in the WHA Gretzky was traded to them by the Indianapolis Racers in the 1978-1979 season. He scored 3 goals with Indianapolis, 43 goals with Edmonton, and 46 total. The second trade was in the 1995-1996 season when the Los Angeles Kings traded him to the St. Louis Blues. He scored 15 goals with Los Angeles, 8 goals with St. Louis, and 23 goals total.</p>
 <p>When comparing the data there is one factor that separates Ovechkin from Hull, Lemieux, and Gretzky: Ovechkin is the only one that does not have an 80 goal season. Since Ovechkin’s strongest trait is goal scoring this could possibly hurt his reputation as one of the best goal scorers. However, the outlook for Ovechkin may not be as grim as that last statement made it seem. Super Mario’s 85 goal season was a large outlier, and this can be seen on the boxplot that represents his production in question 1. Brett Hull’s 86 goal season in 1990-1991 was not an outlier, but his production steadily went down the rest of his career. Gretzky had multiple but, he is called “The Great One” for a reason. But of the four players Ovechkin had the most instant impact with 52 goals in his rookie season. This is the most for a rookie season compared to the other three. Hull had 26, Lemieux had 43, and Gretzky had 46. On top of this, Ovechkin has never had a season where he scored under 30 goals whereas after their amazing seasons the other three players regressed. Ovechkin doesn’t have the best individual goal scoring seasons of the four, but he is the most consistent.</p>
 </div>
+<div id="question-3" class="section level2">
+<h2>Question 3</h2>
+<p>My final question is where does Ovechkin fall on the list of total career goals, and whether or not it is possible for him to eventually set the record for most career goals before he retires.</p>
+<pre class="r"><code>top_250_career %&gt;%
+  filter(total_goals &gt; 650) %&gt;%
+  ggplot(top_250_career, mapping = aes(x = player, stat = total_goals)) +
+  geom_bar() +
+  theme(axis.text.x = element_text(angle = -90, hjust = 0))</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+</div>
 
     </div>
   </article>

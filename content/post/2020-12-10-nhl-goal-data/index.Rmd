@@ -52,6 +52,7 @@ However, this graph is not the end all be all in determining the caliber of goal
 My next question that I want to investigate is how Ovechkin's path as a prolific goal scorer in his career compares to the career trajectories of the other greats that stood out in the previous graphic: Wayne Gretzky, Mario Lemieux, and Brett Hull.
 
 ```{r}
+
 season_goals %>%
   filter(player == "Alex Ovechkin") %>%
   ggplot(season_goals, mapping = aes(season, goals)) +
@@ -103,11 +104,28 @@ When comparing the data there is one factor that separates Ovechkin from Hull, L
 My final question is where does Ovechkin fall on the list of total career goals, and whether or not it is possible for him to eventually set the record for most career goals before he retires.
 
 ```{r}
+
 top_250_career %>%
-  filter(total_goals > 650) %>%
-  ggplot(top_250_career, mapping = aes(player, total_goals)) +
-  geom_point() +
-  theme(axis.text.x = element_text(angle = -90, hjust = 0))
+  filter(total_goals > 675) %>%
+  ggplot(top_250_career, mapping = aes(raw_rank, total_goals)) +
+  geom_point(col = "darkred") +
+  gghighlight(raw_rank > 0 & raw_rank < 2 ,
+              label_key = player,
+              unhighlighted_colour = alpha("steelblue", 0.4)) +
+  geom_point(col = "darkred", size = 2.5) +
+  scale_x_continuous(breaks = round(seq(min(0), max(14), by = 1),1)) +
+  scale_y_continuous(breaks = round(seq(min(0), max(900), by = 25),1)) 
+
+top_250_career %>%
+  filter(total_goals > 675) %>%
+  ggplot(top_250_career, mapping = aes(raw_rank, total_goals)) +
+  geom_point(col = "darkred") +
+  gghighlight(raw_rank > 7 & raw_rank < 9,
+              label_key = player,
+              unhighlighted_colour = alpha("steelblue", 0.4)) +
+  geom_point(col = "darkred", size = 2.5) +
+  scale_x_continuous(breaks = round(seq(min(0), max(14), by = 1),1)) +
+  scale_y_continuous(breaks = round(seq(min(0), max(900), by = 25),1)) 
 
 ```
 

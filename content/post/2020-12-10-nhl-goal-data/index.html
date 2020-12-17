@@ -87,8 +87,8 @@ GOAT_goal_scorers &lt;- season_goals %&gt;%
 <p>My final question is where does Ovechkin fall on the list of total career goals, and whether or not it is possible for him to eventually set the record for most career goals before he retires.</p>
 <pre class="r"><code>top_250_career %&gt;%
   filter(total_goals &gt; 650) %&gt;%
-  ggplot(top_250_career, mapping = aes(player, total_goals)) +
-  geom_point() +
+  ggplot(top_250_career, mapping = aes(x = player, stat = total_goals)) +
+  geom_bar() +
   theme(axis.text.x = element_text(angle = -90, hjust = 0))</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
