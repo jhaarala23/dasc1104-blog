@@ -1,6 +1,0 @@
-"0",""
-"0","ggpairs(data = RAPTOR_byteam_latest, mapping = aes(pace_impact, raptor_total, color = war_total, size = mp))"
-"2","Error in stop_if_high_cardinality(data, columns, cardinality_threshold) : 
-  Column 'player_name' has more levels (530) than the threshold (15) allowed.
-Please remove the column or increase the 'cardinality_threshold' parameter. Increasing the cardinality_threshold may produce long processing times
-"
