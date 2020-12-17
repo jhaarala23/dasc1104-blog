@@ -1,0 +1,126 @@
+---
+output: 
+  pdf_document:
+    latex_engine: pdflatex
+    keep_tex: false
+    dev: cairo_pdf
+    template:        svm-latex-resume.tex
+
+title: "Résumé"
+author: "Jacob Haarala"
+date: "9/8/2020 -- Update before applying"
+
+fontawesome: TRUE
+# geometry: margin=1in
+geometry: "top=.5in, left =.5in, right=.5in, bottom=.75in"
+
+# How can we get a hold of you?
+email: jhaarala@uark.edu
+phone: 920-851-0072
+location: "University of Arkansas"
+github: jhaarala23
+linkedin: "jacob-haarala-2a683b1b8"
+mainfont: cochineal
+sansfont: Fira Sans
+# monofont: Fira Code # I want to use this, but seems to choke on @
+urlcolor: blue
+fontsize: 11pt
+
+includephoto: TRUE
+myphoto: art-picture.jpg
+# shift: "7in,-.25in" # this is default
+photobigness: 1.75cm
+# photozoom: ".2\textwidth" # this is default
+---
+
+
+<!-- Read more about Pandoc's [fenced_divs](https://pandoc.org/MANUAL.html#extension-fenced_divs) syntax -->
+
+:::::: {.columns}
+::: {.column width="60%" data-latex="{0.60\textwidth}"}
+
+# Objective
+
+*To get an internship and acquire experience in my field before graduating.*
+
+# Working Experience
+
+## Rocketfast! Car Wash
+*(June 2020 — August 2020)*
+
+- Acquired experience in Customer Service
+
+- Managed Customers Accounts for Monthly Wash Plans
+
+- Encountered situations where it was required to use critical thinking	
+
+
+## Volunteer Experience or Leadership
+
+- *Sports Writer for the “Chatterbox”*
+  
+  ~(May 2019 — April 2020)~
+  
+  School Newspaper at Ruston High School
+
+:::
+::: {.column width="2%" data-latex="{0.02\textwidth}"}
+\ 
+<!-- an empty div with an empty character to serve as a column sep -->
+:::
+:::::: {.column width="38%" data-latex="{0.38\textwidth}"}
+
+# Education
+
+Ruston High School Class of 2020
+
+**Undergraduate Program**
+
+- *Bachelor of Data Science*
+  
+  ~Expected Graduation Date: 
+  May 2024~
+
+
+# Skills 
+
+- *Learning R, Python, and Java*
+- *Bilingual (English, German)*
+- *Experience working in a team setting*
+- *Strong Work Ethic*
+
+## Awards and Distinctions
+
+- *Eagle Scout*
+  
+  ~Earned in August of 2018~
+- *2019-2020 Louisiana Future Business Leaders of America (FBLA) State Parliamentarian*
+  
+  ~May 2019~
+
+:::
+::::::
+
+<!-- If you want another page, this is how you can do it... -->
+
+<!-- \newpage
+
+:::::: {.columns}
+::: {.column width="60%" data-latex="{0.60\textwidth}"}
+
+
+
+
+:::
+::: {.column width="2%" data-latex="{0.02\textwidth}"}
+\
+
+
+:::
+:::::: {.column width="38%" data-latex="{0.38\textwidth}"}
+
+
+:::
+::::::
+
+-->

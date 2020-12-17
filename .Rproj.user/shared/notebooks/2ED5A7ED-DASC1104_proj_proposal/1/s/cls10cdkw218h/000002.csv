@@ -1,0 +1,46 @@
+"0",""
+"0","nfl_elo <- read_csv(file = here::here(""nfl-elo"", ""nfl_elo.csv""))"
+"2","Parsed with column specification:
+cols(
+  .default = col_logical(),
+  date = [34mcol_date(format = """")[39m,
+  season = [32mcol_double()[39m,
+  neutral = [32mcol_double()[39m,
+  team1 = [31mcol_character()[39m,
+  team2 = [31mcol_character()[39m,
+  elo1_pre = [32mcol_double()[39m,
+  elo2_pre = [32mcol_double()[39m,
+  elo_prob1 = [32mcol_double()[39m,
+  elo_prob2 = [32mcol_double()[39m,
+  elo1_post = [32mcol_double()[39m,
+  elo2_post = [32mcol_double()[39m,
+  score1 = [32mcol_double()[39m,
+  score2 = [32mcol_double()[39m
+)
+"
+"2","See spec(...) for full column specifications.
+"
+"2","234129 parsing failures.
+ row     col           expected actual                                                                                     file
+1054 playoff 1/0/T/F/TRUE/FALSE      c '/home/jhaarala/git@github.com:jhaarala23/dasc1104-github-repos.git/nfl-elo/nfl_elo.csv'
+1115 playoff 1/0/T/F/TRUE/FALSE      c '/home/jhaarala/git@github.com:jhaarala23/dasc1104-github-repos.git/nfl-elo/nfl_elo.csv'
+1169 playoff 1/0/T/F/TRUE/FALSE      c '/home/jhaarala/git@github.com:jhaarala23/dasc1104-github-repos.git/nfl-elo/nfl_elo.csv'
+1224 playoff 1/0/T/F/TRUE/FALSE      c '/home/jhaarala/git@github.com:jhaarala23/dasc1104-github-repos.git/nfl-elo/nfl_elo.csv'
+1280 playoff 1/0/T/F/TRUE/FALSE      c '/home/jhaarala/git@github.com:jhaarala23/dasc1104-github-repos.git/nfl-elo/nfl_elo.csv'
+.... ....... .................. ...... ........................................................................................
+See problems(...) for more details.
+"
+"0","nfl_elo_latest <- read_csv(file = here::here(""nfl-elo"", ""nfl_elo_latest.csv""))"
+"2","Parsed with column specification:
+cols(
+  .default = col_double(),
+  date = [34mcol_date(format = """")[39m,
+  playoff = [31mcol_character()[39m,
+  team1 = [31mcol_character()[39m,
+  team2 = [31mcol_character()[39m,
+  qb1 = [31mcol_character()[39m,
+  qb2 = [31mcol_character()[39m
+)
+"
+"2","See spec(...) for full column specifications.
+"

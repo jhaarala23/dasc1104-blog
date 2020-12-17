@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jhaarala&#39;s DASC 1104 Blog</title>
+    <link>/</link>
+    <description>Recent content on jhaarala&#39;s DASC 1104 Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Fri, 04 Dec 2020 18:38:51 -0700</pubDate>
+      
+      <guid>/about/</guid>
+      <description>My name is Jacob Haarala. I am currently an Honors Data Science student at the University of Arkansas in my freshman year. During my childhood I grew up parts in Wisconsin and Louisiana. I hope that someday this blog could help potentially springboard my professional career, and help me get some good job oppurtunities.</description>
+    </item>
+    
+  </channel>
+</rss>

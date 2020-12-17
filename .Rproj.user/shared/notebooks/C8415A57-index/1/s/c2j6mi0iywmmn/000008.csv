@@ -1,0 +1,7 @@
+"0",""
+"0","ggplot(data = playoffs, mapping = aes(season, poss, color = team)) +"
+"0","  geom_point() +"
+"0","  xlab(""playoffs"") +"
+"0","  facet_wrap(~team) +"
+"0","  theme(legend.position = ""None"") +"
+"0","  theme(axis.text.x = element_text(angle = -90, hjust = 0))"

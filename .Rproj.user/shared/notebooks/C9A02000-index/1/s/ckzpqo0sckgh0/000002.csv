@@ -1,0 +1,3 @@
+"0","# filter to only include seasons of >= 60 goals scored"
+"0","GOAT_goal_scorers <- season_goals %>%"
+"0","  filter(goals > 60)"

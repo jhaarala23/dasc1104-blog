@@ -1,0 +1,5 @@
+"0","library(tidyverse)"
+"0","RAPTOR_byplayer_latest <- read_csv(""latest_RAPTOR_by_player.csv"")"
+"0","RAPTOR_byteam_latest <- read_csv(""latest_RAPTOR_by_team.csv"")"
+"0","RAPTOR_byplayer_hist <- read_csv(""historical_RAPTOR_by_player.csv"")"
+"0","RAPTOR_byteam_hist <- read_csv(""historical_RAPTOR_by_team.csv"")"

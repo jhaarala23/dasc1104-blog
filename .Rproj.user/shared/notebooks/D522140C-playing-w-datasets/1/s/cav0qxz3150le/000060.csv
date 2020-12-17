@@ -1,0 +1,20 @@
+"0",""
+"0","top_250_career %>%"
+"0","  filter(total_goals > 675) %>%"
+"0","  ggplot(top_250_career, mapping = aes(raw_rank, total_goals)) +"
+"0","  geom_point(col = ""darkred"") +"
+"0","  gghighlight(raw_rank > 0 & raw_rank < 2,"
+"0","              raw_rank > 7 & raw_rank < 9,"
+"0","              unhighlighted_colour = alpha(""steelblue"", 0.4),"
+"0","              use_direct_label = TRUE,"
+"0","              label_key = name,"
+"0","              label_params = list(size = 5)) +"
+"0","  scale_x_continuous(breaks = round(seq(min(0), max(14), by = 1),1)) +"
+"0","  scale_y_continuous(breaks = round(seq(min(0), max(900), by = 25),1)) "
+"2","The `unhighlighted_colour` argument of `gghighlight()` is deprecated as of gghighlight 0.2.0.
+Please use the `unhighlighted_params` argument instead.
+[90mThis warning is displayed once every 8 hours.[39m
+[90mCall `lifecycle::last_warnings()` to see where this warning was generated.[39m"
+"2","Error: No layer can be used for labels
+[90mRun `rlang::last_error()` to see where the error occurred.[39m
+"
