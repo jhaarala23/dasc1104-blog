@@ -110,24 +110,15 @@ top_250_career %>%
   filter(total_goals > 675) %>%
   ggplot(top_250_career, mapping = aes(raw_rank, total_goals)) +
   geom_point(col = "darkred") +
-  gghighlight(raw_rank > 0 & raw_rank < 2 ,
-              label_key = player,
-              unhighlighted_colour = alpha("steelblue", 0.4)) +
-  geom_point(col = "darkred", size = 2.5) +
-  scale_x_continuous(breaks = round(seq(min(0), max(14), by = 1),1)) +
-  scale_y_continuous(breaks = round(seq(min(0), max(900), by = 25),1)) 
-
-top_250_career %>%
-  filter(total_goals > 675) %>%
-  ggplot(top_250_career, mapping = aes(raw_rank, total_goals)) +
-  geom_point(col = "darkred") +
-  gghighlight(raw_rank > 7 & raw_rank < 9,
+  gghighlight(raw_rank %in% c(1, 8),
               label_key = player,
               unhighlighted_colour = alpha("steelblue", 0.4)) +
   geom_point(col = "darkred", size = 2.5) +
   scale_x_continuous(breaks = round(seq(min(0), max(14), by = 1),1)) +
   scale_y_continuous(breaks = round(seq(min(0), max(900), by = 25),1)) 
 ```
+
+
 
 These two graphics highlight Gretzky and Ovechkin on a list of top goal scorers of all time. Gretzky is currently in 1st with 894 goals, and Ovechkin is currently in 8th with 700 goals. Since the making of this data set Ovechkin scored 6 more goals before the stoppage due to COVID to reach a grand total of 706 career goals, which happens to put him 2 goals behind number 7 on the all time list Mike Gartner who had 708 career goals. Ovechkin has played in the NHL for 15 seasons. To get an average of how many goals he scores per season we can divide his 706 career goals by his 15 seasons.
 
