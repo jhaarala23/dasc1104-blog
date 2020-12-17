@@ -1,4 +1,0 @@
-install.packages("tidyverse")
-install.packages("tinytex")
-install.packages("blogdown")
-tinytex::install_tinytex()

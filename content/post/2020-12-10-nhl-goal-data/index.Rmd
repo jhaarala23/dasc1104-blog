@@ -1,10 +1,11 @@
 ---
-title: NHL Goal Data
-author: ~
+title: "NHL Goal Data"
+author: "null"
 date: '2020-12-10'
-slug: nhl-goal-data
+output: pdf_document
 categories: []
 tags: []
+slug: nhl-goal-data
 ---
 
 ## Data

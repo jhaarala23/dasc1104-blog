@@ -32,6 +32,7 @@ ggplot(data = RAPTOR_byteam_latest, mapping = aes(pace_impact, raptor_total, col
 
 ggplot(data = RAPTOR_byteam_latest, mapping = aes(pace_impact, raptor_total, color = war_total, size = mp)) +
   geom_point() 
+
 ```
 On the first graph most of the data values, and WAR ratings do not seem to have a consistent trend. However there are some higher data values that didn't have a clear explanation so I decided to correlate the dot size to minutes played on the second graph. I did this because RAPTOR data is supposed to be used to determine how effctive a player is, but does not necessarily always account for sample size. In the second graph we can see that all the outlier values are smaller dots which means they are for players who do not play as many minutes which hurts their level of effectiveness compared to the other players in the league.
 
