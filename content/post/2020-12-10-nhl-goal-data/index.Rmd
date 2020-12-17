@@ -59,6 +59,7 @@ season_goals %>%
   ggplot(season_goals, mapping = aes(season, goals)) +
   geom_point(shape=21, col = "midnightblue") +
   geom_line(color="red", group = 1) +
+  # I labeled the season in which each player scored their career high for goals in one season to show the exact number of goals they scored
    gghighlight(max(goals) > 60,
               label_key = goals,
               unhighlighted_colour = alpha("red", 1)) +
