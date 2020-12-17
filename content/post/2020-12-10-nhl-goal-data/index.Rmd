@@ -1,8 +1,7 @@
 ---
 title: "NHL Goal Data"
-author: "null"
+author: 'null'
 date: '2020-12-10'
-output: pdf_document
 categories: []
 tags: []
 slug: nhl-goal-data
@@ -105,6 +104,7 @@ When comparing the data there is one factor that separates Ovechkin from Hull, L
 My final question is where does Ovechkin fall on the list of total career goals, and whether or not it is possible for him to eventually set the record for most career goals before he retires.
 
 ```{r}
+library(gghighlight)
 
 top_250_career %>%
   filter(total_goals > 675) %>%
