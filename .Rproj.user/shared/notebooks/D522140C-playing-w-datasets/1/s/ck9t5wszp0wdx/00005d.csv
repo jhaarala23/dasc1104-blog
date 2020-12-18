@@ -1,7 +1,0 @@
-"0","season_goals %>%"
-"0","  filter(goals > 60) %>%"
-"0","  ggplot(season_goals, mapping = aes(player, goals, fill = player)) +"
-"0","  geom_boxplot() +"
-"0","  theme(axis.text.x = element_text(angle = -90, hjust = 0)) +"
-"0","  theme(legend.position = ""None"") +"
-"0","  scale_fill_manual(values = c(""Alex Ovechkin"" = ""red4"", ""Alexander Mogilny"" = ""navy"", ""Bernie Nicholls"" = ""gray4"", ""Bobby Hull"" = ""red4"", ""Brett Hull"" = ""green4"", ""Jari Kurri"" = ""orangered"", ""Jaromir Jagr"" = ""yellow3"", ""Lanny McDonald"" = ""red3"", ""Luc Robitaille"" = ""darkorchid4"", ""Mario Lemieux"" = ""yellow2"", ""Mike Bossy"" = ""chocolate1"", ""Phil Esposito"" = ""gold"", ""Reggie Leach"" = ""darkorange"",  ""Steve Yzerman"" = ""red3"", ""Teemu Selanne"" = ""navyblue"", ""Wayne Gretzky"" = ""mediumblue""))"
